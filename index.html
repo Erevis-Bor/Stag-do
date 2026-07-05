@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#ff7a18" />
+<title>Stag Do Tournament</title>
+<style>
+:root{
+  --bg:#fff7e8; --ink:#1f160f; --muted:#7b6550; --card:#fffdf8; --line:#ead6b8;
+  --orange:#ff7a18; --pink:#ff3d7f; --green:#0eaa72; --blue:#2b70ff; --gold:#f9b728;
+  --dark:#201108; --soft:#ffe2bd; --good:#13a76b; --bad:#c83e2d;
+  --shadow:0 10px 28px rgba(80,38,0,.14); --r:22px; --rs:14px;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui,sans-serif;
+  --display:"Avenir Next",Futura,var(--font);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent} html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font)}
+body{min-height:100vh;min-height:100dvh}.app{min-height:100vh;min-height:100dvh;padding-bottom:92px}.top{padding:22px 18px 14px;background:linear-gradient(135deg,var(--orange),var(--pink));color:white;position:sticky;top:0;z-index:10;box-shadow:0 8px 24px rgba(255,90,25,.22)}
+.kicker{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}.title{font-family:var(--display);font-size:31px;line-height:1;font-weight:900;margin:4px 0}.sub{font-size:14px;opacity:.9}.wrap{padding:16px;max-width:760px;margin:0 auto}.hero{background:var(--dark);color:white;border-radius:28px;padding:18px;box-shadow:var(--shadow);overflow:hidden;position:relative}.hero:after{content:"🍻";position:absolute;right:18px;top:10px;font-size:58px;opacity:.18}.hero h2{font-size:28px;margin:0 0 6px}.hero p{margin:0;color:#ffe6c9;line-height:1.4}.grid{display:grid;gap:12px}.cards{display:grid;grid-template-columns:1fr;gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}.card h3{margin:0 0 8px;font-size:18px}.small{font-size:13px;color:var(--muted);line-height:1.45}.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 10px;font-weight:800;font-size:12px;background:var(--soft);color:#703800}.btn{border:0;border-radius:16px;padding:13px 15px;font-weight:900;font-size:15px;background:var(--dark);color:white;box-shadow:0 8px 18px rgba(32,17,8,.15)}.btn:active{transform:scale(.98)}.btn.primary{background:linear-gradient(135deg,var(--orange),var(--pink))}.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--ink);box-shadow:none}.btn.danger{background:var(--bad)}.row{display:flex;gap:10px;align-items:center}.row>*{flex:1}.section{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;font-size:12px;color:var(--muted);margin:20px 2px 10px}.tabbar{position:fixed;left:0;right:0;bottom:0;background:rgba(255,253,248,.95);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:flex;gap:2px;padding:8px 6px calc(8px + env(safe-area-inset-bottom));z-index:20}.tab{flex:1;border:0;background:transparent;border-radius:16px;padding:8px 2px;color:var(--muted);font-size:11px;font-weight:900}.tab span{display:block;font-size:20px;margin-bottom:2px}.tab.active{background:var(--dark);color:white}.game-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.game-title h2{margin:0;font-size:28px}.match{width:100%;text-align:left;background:white;border:1px solid var(--line);border-left:8px solid var(--orange);border-radius:20px;padding:15px;margin-bottom:10px;box-shadow:var(--shadow)}.match .names{font-size:20px;font-weight:900}.vs{color:var(--muted);font-size:14px;margin:0 7px}.cta{margin-top:6px;color:var(--muted);font-size:13px}.done{opacity:.75}.joker{background:linear-gradient(135deg,#fff,#ffefc8);border:2px dashed var(--gold);border-radius:20px;padding:14px;margin:10px 0;color:#5b3902}.lbrow,.playerrow{display:flex;align-items:center;gap:10px;padding:12px 4px;border-bottom:1px solid var(--line)}.rank{width:38px;font-size:22px;font-weight:1000;color:var(--orange)}.name{flex:1;font-weight:900}.pts{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:900}.break{font-size:12px;color:var(--muted)}textarea,input{width:100%;border:1px solid var(--line);border-radius:18px;background:white;padding:14px;font-size:16px;color:var(--ink)}textarea{min-height:260px;line-height:1.5}.modal{position:fixed;inset:0;background:rgba(32,17,8,.45);z-index:40;display:flex;align-items:flex-end}.sheet{background:var(--bg);border-radius:28px 28px 0 0;padding:18px;width:100%;max-height:86vh;overflow:auto}.sheet h2{margin:0 42px 14px 0}.close{position:absolute;right:18px;margin-top:0;width:38px;height:38px;border-radius:50%;border:0;background:white;font-size:18px}.pick{width:100%;border:1px solid var(--line);background:white;border-radius:18px;padding:16px;text-align:left;font-size:20px;font-weight:900;margin:8px 0}.pick.selected{border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,122,24,.18)}.label{display:block;font-size:13px;font-weight:800;color:var(--muted);margin:10px 0 6px}.error{color:var(--bad);min-height:18px;font-size:13px;font-weight:800}.rules h3{margin:18px 0 5px}.rules p,.rules li{color:var(--muted);line-height:1.45}.rules ul{padding-left:20px}.empty{text-align:center;padding:28px 12px;color:var(--muted)}
+</style>
+</head>
+<body><div id="app"></div>
+<script>
+(function(){
+const STORE='stag-do-v4-bright-joker';
+const GAMES=[{key:'pool',name:'Pool',icon:'🎱',color:'var(--green)',type:'pool'},{key:'tt',name:'Table Tennis',icon:'🏓',color:'var(--blue)',type:'tt'},{key:'cornhole',name:'Cornhole',icon:'🟡',color:'var(--gold)',type:'cornhole'}];
+let state={view:'home',players:[],tournaments:null,modal:null};
+const $=s=>document.querySelector(s), esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function save(){localStorage.setItem(STORE,JSON.stringify(state))} function load(){try{const x=JSON.parse(localStorage.getItem(STORE)); if(x) state=x}catch(e){}}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function match(a,b){return{a,b,winner:null,loser:null,sw:null,sl:null,margin:null}}
+function roundName(n){if(n===2)return'Final';if(n===4)return'Semi-Finals';if(n===8)return'Quarter-Finals';if(n===16)return'Round of 16';return'Round of '+n}
+function startRound(entrants,num){let e=shuffle(entrants), joker=null;if(e.length%2===1&&e.length>1) joker=e.shift();let matches=[];for(let i=0;i<e.length;i+=2)matches.push(match(e[i],e[i+1]));return{num,entrants,stage:roundName(entrants.length),joker,matches,jokerMatch:null,closestLoser:null,closestLosers:null,playoff:null,advanced:false}}
+function createTournament(players){return{rounds:[startRound(players,1)],third:null,complete:false,standings:null}}
+function generate(){state.tournaments={};GAMES.forEach(g=>state.tournaments[g.key]=createTournament(state.players));state.view='play';save();render()}
+function current(t){return t.rounds[t.rounds.length-1]}
+function roundNormalDone(r){return r.matches.every(m=>m.winner)}
+function allRoundDone(r){return roundNormalDone(r)&&(!r.joker||r.jokerMatch&&r.jokerMatch.winner)}
+function closestLosers(r){let losers=r.matches.map(m=>({name:m.loser,margin:m.margin})).filter(x=>x.name!==undefined&&x.name!==null);let best=Math.min(...losers.map(x=>x.margin));return losers.filter(x=>x.margin===best).map(x=>x.name)}
+function createPlayoff(names){let e=shuffle(names),bye=null;if(e.length%2===1&&e.length>1)bye=e.shift();let matches=[];for(let i=0;i<e.length;i+=2)matches.push(match(e[i],e[i+1]));return{entrants:names.slice(),bye,matches,round:1,complete:false,winner:null}}
+function advancePlayoff(p){if(!p||p.complete)return;if(!p.matches.every(m=>m.winner))return;let winners=p.matches.map(m=>m.winner);if(p.bye)winners.push(p.bye);if(winners.length===1){p.complete=true;p.winner=winners[0];return}let e=shuffle(winners);p.bye=null;if(e.length%2===1&&e.length>1)p.bye=e.shift();p.matches=[];for(let i=0;i<e.length;i+=2)p.matches.push(match(e[i],e[i+1]));p.round++}
+function afterResult(t){let r=current(t);
+ if(r.joker&&roundNormalDone(r)&&!r.jokerMatch){
+   if(!r.playoff){
+     let tied=closestLosers(r);r.closestLosers=tied;
+     if(tied.length===1){r.closestLoser=tied[0];r.jokerMatch=match(r.joker,r.closestLoser);return}
+     r.playoff=createPlayoff(tied);return
+   }
+   if(r.playoff.complete){r.closestLoser=r.playoff.winner;r.jokerMatch=match(r.joker,r.closestLoser);return}
+   return
+ }
+ if(!allRoundDone(r)||r.advanced)return; r.advanced=true; let winners=r.matches.map(m=>m.winner); if(r.joker) winners.push(r.jokerMatch.winner);
+ if(winners.length===1){t.complete=true;computeStandings(t);return}
+ t.rounds.push(startRound(winners,r.num+1));}
+function applyResult(t,ri,mi,isJoker,w,sw,sl){let r=t.rounds[ri],m=isJoker?r.jokerMatch:r.matches[mi];m.winner=w;m.loser=w===m.a?m.b:m.a;m.sw=sw;m.sl=sl;m.margin=(sw===null)?sl:Math.abs(sw-sl);afterResult(t);computeStandings(t)}
+function applyPlayoffResult(t,ri,mi,w,sw,sl){let r=t.rounds[ri],m=r.playoff.matches[mi];m.winner=w;m.loser=w===m.a?m.b:m.a;m.sw=sw;m.sl=sl;m.margin=(sw===null)?sl:Math.abs(sw-sl);advancePlayoff(r.playoff);afterResult(t);computeStandings(t)}
+function repairTiedClosestLoserState(){
+ let repaired=false;
+ if(!state.tournaments)return false;
+ Object.values(state.tournaments).forEach(t=>{
+  if(!t||!t.rounds)return;
+  t.rounds.forEach(r=>{
+   if(!r.joker||!roundNormalDone(r)||r.playoff)return;
+   let tied=closestLosers(r);
+   if(tied.length>1 && (!r.jokerMatch || !r.jokerMatch.winner)){
+    r.closestLosers=tied;
+    r.closestLoser=null;
+    r.playoff=createPlayoff(tied);
+    r.jokerMatch=null;
+    r.advanced=false;
+    repaired=true;
+   }
+  });
+  computeStandings(t);
+ });
+ if(repaired)save();
+ return repaired;
+}
+
+function computeStandings(t){let alive=new Set(); if(!t.complete){let r=current(t);r.matches.forEach(m=>{if(!m.winner){alive.add(m.a);alive.add(m.b)}else alive.add(m.winner)}); if(r.joker&&!r.jokerMatch)alive.add(r.joker); if(r.jokerMatch&&!r.jokerMatch.winner){alive.add(r.jokerMatch.a);alive.add(r.jokerMatch.b)}}
+ let eliminated=[]; t.rounds.forEach((r,idx)=>{let stage=idx+1;if(r.entrants.length===2)return;let protectedLoser=r.jokerMatch?r.closestLoser:null;r.matches.forEach(m=>{if(m.winner&&m.loser!==protectedLoser)eliminated.push({name:m.loser,stage,margin:m.margin})}); if(r.playoff)r.playoff.matches.forEach(m=>{if(m.winner)eliminated.push({name:m.loser,stage,margin:m.margin})}); if(r.jokerMatch&&r.jokerMatch.winner)eliminated.push({name:r.jokerMatch.loser,stage,margin:r.jokerMatch.margin})});
+ let final=t.rounds.find(r=>r.entrants.length===2&&allRoundDone(r)); let res=[]; if(final){let m=final.matches[0];res.push({name:m.winner,rank:1});res.push({name:m.loser,rank:2})}
+ eliminated.sort((a,b)=>b.stage-a.stage||a.margin-b.margin); let rank=res.length+1,lastKey=null,lastRank=rank; eliminated.forEach((e,i)=>{let key=e.stage+'-'+e.margin;if(key!==lastKey){lastRank=rank+i;lastKey=key}res.push({name:e.name,rank:lastRank})});
+ if(!final){state.players.forEach(p=>{if(alive.has(p)&&!res.find(x=>x.name===p))res.push({name:p,rank:null})})}
+ res.forEach(x=>{x.points=x.rank?Math.max(0,state.players.length-x.rank+1):0});t.standings=res;}
+function gameScoreValid(g,sw,sl){if(g.type==='pool'){if(sl<0||sl>7)return'Pool balls remaining must be 0–7.';return''} if(g.type==='tt'){if(sw<11)return'Table tennis winner must reach at least 11.'; if(sw-sl<2)return'Table tennis must be won by 2 clear points.'; if(sl<10&&sw!==11)return'If the loser has under 10, the winner should finish on 11.'; if(sl>=10&&sw!==sl+2)return'After 10–10, play until someone is exactly 2 clear.'; return''} if(g.type==='cornhole'){if(sw!==21)return'Cornhole winner should finish on exactly 21.'; if(sl<0||sl>=21)return'Cornhole loser must be below 21.'; return''}return''}
+function header(){let title={home:'Stag Tournament',play:'Play',leader:'Live Leaderboard',players:'Participants',rules:'Rules'}[state.view]||'Stag Tournament';return`<div class="top"><div class="kicker">THE STAG DO</div><div class="title">${title}</div><div class="sub">3 games. 1 champion. Joker rule enabled. <b>v6 winner edit</b></div></div>`}
+function tabs(){return`<div class="tabbar">${[['home','🏠','Home'],['play','🎮','Play'],['leader','🏆','Leaderboard'],['players','👥','Players'],['rules','📜','Rules']].map(t=>`<button class="tab ${state.view===t[0]?'active':''}" data-tab="${t[0]}"><span>${t[1]}</span>${t[2]}</button>`).join('')}</div>`}
+function home(){return`<div class="wrap grid"><div class="hero"><h2>Bright lights. Bad throws. Big claims.</h2><p>Run Pool, Table Tennis and Cornhole from one phone. Results update the leaderboard as you go.</p></div><div class="cards">${GAMES.map(g=>`<div class="card"><span class="pill">${g.icon} ${g.name}</span><h3>${g.type==='pool'?'Full game':g.type==='tt'?'First to 11, win by 2':'First to 21'}</h3><p class="small">${g.type==='pool'?'Record loser balls remaining for tie-breaks.':g.type==='tt'?'Deuce at 10–10. Every point matters.':'Cancellation scoring. Winner finishes on 21.'}</p></div>`).join('')}</div><button class="btn primary" data-tab="play">Start playing</button></div>`}
+function play(){if(!state.players.length)return`<div class="wrap"><div class="empty">Add participants first.</div><button class="btn primary" data-tab="players">Add participants</button></div>`; if(!state.tournaments)return`<div class="wrap"><button class="btn primary" data-gen>Generate tournaments</button></div>`;return`<div class="wrap"><button class="btn ghost" style="width:100%;margin-bottom:12px" data-repairjoker>Repair Joker Tie</button>${miniLeaderboard()}${GAMES.map(renderGame).join('')}</div>`}
+
+function miniLeaderboard(){if(!state.players.length||!state.tournaments)return'';let rows=state.players.map(p=>{let total=0;GAMES.forEach(g=>total+=liveGamePoints(state.tournaments[g.key],p));return{name:p,total}}).sort((a,b)=>b.total-a.total||a.name.localeCompare(b.name)).slice(0,5);return`<div class="card" style="margin-bottom:16px"><h3>🏆 Live Top 5</h3>${rows.map((r,i)=>`<div class="lbrow"><div class="rank">${i+1}</div><div class="name">${esc(r.name)}</div><div class="pts">${r.total}</div></div>`).join('')}<button class="btn ghost" style="width:100%;margin-top:10px" data-tab="leader">View full leaderboard</button></div>`}
+
+function renderGame(g){let t=state.tournaments[g.key];let r=current(t);return`<div class="card" style="margin-bottom:16px"><div class="game-title"><h2>${g.icon} ${g.name}</h2><span class="pill">${t.complete?'Complete':r.stage}</span></div>${t.complete?renderGameWinner(t):renderRound(g,t,r)}${renderHistory(g,t)}</div>`}
+function renderRound(g,t,r){let ri=t.rounds.length-1;let html='';
+ if(r.joker&&!r.jokerMatch&&!r.playoff)html+=`<div class="joker"><b>🃏 ${esc(r.joker)} is the Joker</b><br><span class="small">Waiting to face the closest loser from this round.</span></div>`;
+ if(r.playoff&&!r.playoff.complete){
+   html+=`<div class="joker"><b>⚔️ Closest Loser Playoff</b><br><span class="small">${r.closestLosers.map(esc).join(', ')} tied as closest loser. Play off until one remains, then the winner faces ${esc(r.joker)}.</span></div>`;
+   if(r.playoff.bye)html+=`<div class="joker"><b>${esc(r.playoff.bye)} waits in the playoff</b><br><span class="small">Random bye inside the tied-loser playoff.</span></div>`;
+   html+=`<div class="section">Loser Playoff</div>`;
+   r.playoff.matches.map((m,i)=>[m,i]).filter(x=>!x[0].winner).forEach(([m,i])=>html+=matchCard(g,ri,i,'playoff',m));
+ }
+ if(r.jokerMatch&&!r.jokerMatch.winner)html+=`<div class="section">Joker Match</div>${matchCard(g,ri,0,'joker',r.jokerMatch)}`;
+ html+=`<div class="section">To Play</div>`; let pending=r.matches.map((m,i)=>[m,i]).filter(x=>!x[0].winner); if(!pending.length&&!r.playoff&&!r.jokerMatch)html+=`<div class="small">Waiting for Joker Match / next round.</div>`; if(!pending.length&&(r.playoff||r.jokerMatch))html+=`<div class="small">Main round complete.</div>`; pending.forEach(([m,i])=>html+=matchCard(g,ri,i,'normal',m));return html}
+function matchCard(g,ri,mi,type,m){return`<button class="match" style="border-left-color:${g.color}" data-open="${g.key}|${ri}|${mi}|${type}"><div class="names">${esc(m.a)} <span class="vs">vs</span> ${esc(m.b)}</div><div class="cta">Enter result →</div></button>`}
+function renderHistory(g,t){let out='';t.rounds.forEach((r,ri)=>{let rows=[];r.matches.forEach((m,i)=>{if(m.winner)rows.push(hist(g,m,'',g.key,ri,i,'normal'))}); if(r.playoff)r.playoff.matches.forEach((m,i)=>{if(m.winner)rows.push(hist(g,m,'Loser Playoff',g.key,ri,i,'playoff'))}); if(r.jokerMatch&&r.jokerMatch.winner)rows.push(hist(g,r.jokerMatch,'Joker Match',g.key,ri,0,'joker')); if(rows.length)out+=`<div class="section">${r.stage} results · tap to edit score</div>${rows.join('')}`});return out}
+function hist(g,m,label,gkey,ri,mi,type){let score=g.type==='pool'?`${m.sl} balls left`:`${m.sw}–${m.sl}`;return`<button class="lbrow done" style="width:100%;background:transparent;border:0;text-align:left" data-edit="${gkey}|${ri}|${mi}|${type}"><div class="name">${label?'<span class="pill">🃏 '+label+'</span><br>':''}${esc(m.winner)} beat ${esc(m.loser)}<div class="break">Tap to edit score</div></div><div class="pts">${score}</div></button>`}
+function renderGameWinner(t){let s=(t.standings||[]).find(x=>x.rank===1);return`<div class="hero"><h2>🏆 ${esc(s?s.name:'Winner')}</h2><p>Game complete.</p></div>`}
+function liveGamePoints(t,p){
+ if(!t||!t.standings)return 0;
+ let ent=t.standings.find(x=>x.name===p);
+ if(!ent)return 0;
+ if(ent.rank)return ent.points;
+ let active=0;
+ t.rounds.forEach(r=>{
+  r.matches.forEach(m=>{if(!m.winner&&(m.a===p||m.b===p))active=1});
+  if(r.joker===p&&!r.jokerMatch)active=1;
+  if(r.playoff&&!r.playoff.complete){
+   if(r.playoff.bye===p)active=1;
+   r.playoff.matches.forEach(m=>{if(!m.winner&&(m.a===p||m.b===p))active=1});
+  }
+  if(r.jokerMatch&&!r.jokerMatch.winner&&(r.jokerMatch.a===p||r.jokerMatch.b===p))active=1;
+ });
+ return active?Math.max(0,state.players.length-(t.standings.filter(x=>x.rank).length)):0;
+}
+function leaderboard(){let rows=state.players.map(p=>{let total=0,parts=[];GAMES.forEach(g=>{let t=state.tournaments&&state.tournaments[g.key];let pts=liveGamePoints(t,p);total+=pts;parts.push(`${g.icon} ${pts||'–'}`)});return{name:p,total,parts:parts.join(' · ')}}).sort((a,b)=>b.total-a.total||a.name.localeCompare(b.name));return`<div class="wrap"><div class="hero"><h2>🏆 Live Leaderboard</h2><p>Updates after every match. Players still alive receive a live projected score; final scores lock when each event finishes.</p></div><div class="card" style="margin-top:14px">${rows.length?rows.map((r,i)=>`<div class="lbrow"><div class="rank">${i+1}</div><div class="name">${esc(r.name)}<div class="break">${r.parts}</div></div><div class="pts">${r.total}</div></div>`).join(''):'<div class="empty">No players yet.</div>'}</div></div>`}
+function players(){return`<div class="wrap"><div class="card"><h3>View & edit participants</h3><p class="small"><b>Tip:</b> before major changes, screenshot this page and the results. This build keeps your saved state key.</p><p class="small">One name per line. Saving changes will reset the tournament brackets, because the draw has to be rebuilt.</p><textarea id="names">${state.players.map(esc).join('\n')}</textarea><div class="row" style="margin-top:12px"><button class="btn primary" data-saveplayers>Save participants</button><button class="btn ghost" data-gen>${state.tournaments?'Regenerate':'Generate'}</button></div></div>${state.players.length?`<div class="card" style="margin-top:14px"><h3>${state.players.length} players</h3>${state.players.map((p,i)=>`<div class="playerrow"><div class="rank">${i+1}</div><div class="name">${esc(p)}</div></div>`).join('')}</div>`:''}</div>`}
+function rules(){return`<div class="wrap rules"><div class="card"><h3>🏆 Aim</h3><p>Everyone plays Pool, Table Tennis and Cornhole. Each event is a separate knockout tournament. Highest combined points wins.</p><h3>🃏 Joker Rule</h3><p>If there is an odd number in a round, one player is randomly selected as the Joker. The rest play normal matches. The closest loser then plays the Joker. Winner takes the spare place in the next round.</p><ul><li>15 players = 7 matches + 1 Joker.</li><li>The closest loser gets a second chance.</li><li>If closest loser is tied, the tied losers play a mini knockout playoff until one remains.</li><li>The playoff winner faces the Joker.</li><li>The Joker is not through automatically. They must win the Joker Match.</li></ul><h3>🎱 Pool</h3><p>Play a full game. Record how many balls the loser had left, from 0–7.</p><h3>🏓 Table Tennis</h3><p>First to 11. If it reaches 10–10, play until someone wins by 2 clear points.</p><h3>🟡 Cornhole</h3><p>First to 21 using cancellation scoring.</p><h3>📊 Rankings</h3><p>Players are ranked by how far they progress. If players go out in the same round, closest defeat ranks higher. Tied margins share the position.</p></div></div>`}
+function modal(){let o=state.modal;if(!o)return'';let g=GAMES.find(x=>x.key===o.g),t=state.tournaments[o.g],r=t.rounds[o.ri],m=o.type==='joker'?r.jokerMatch:o.type==='playoff'?r.playoff.matches[o.mi]:r.matches[o.mi];let loser=o.winner?(o.winner===m.a?m.b:m.a):'';return`<div class="modal"><div class="sheet"><button class="close" data-close>×</button>${!o.winner?`<h2>Who won?</h2><button class="pick" data-winner="${esc(m.a)}">${esc(m.a)}</button><button class="pick" data-winner="${esc(m.b)}">${esc(m.b)}</button>`:`<h2>${esc(o.winner)} beat ${esc(loser)}</h2>${g.type==='pool'?`<label class="label">Balls ${esc(loser)} had left</label><input id="sl" type="number" inputmode="numeric" placeholder="0–7">`:`<div class="row"><div><label class="label">${esc(o.winner)}</label><input id="sw" type="number" inputmode="numeric" placeholder="${g.type==='tt'?'11':'21'}"></div><div><label class="label">${esc(loser)}</label><input id="sl" type="number" inputmode="numeric" placeholder="0"></div></div>`}<div class="error" id="err"></div><button class="btn primary" style="width:100%;margin-top:10px" data-saveresult>Save result</button>`}</div></div>`}
+
+function editModal(){
+ let o=state.edit;if(!o)return'';
+ let g=GAMES.find(x=>x.key===o.g),t=state.tournaments[o.g],r=t.rounds[o.ri];
+ let m=o.type==='joker'?r.jokerMatch:o.type==='playoff'?r.playoff.matches[o.mi]:r.matches[o.mi];
+ if(!m||!m.winner)return'';
+ let selected=o.winner||m.winner;
+ let loser=selected===m.a?m.b:m.a;
+ let swVal=m.sw!==null&&m.sw!==undefined?m.sw:'';
+ let slVal=m.sl!==null&&m.sl!==undefined?m.sl:'';
+ return`<div class="modal"><div class="sheet"><button class="close" data-closeedit>×</button><h2>Edit result</h2><p class="small">You can correct the winner or score. If you change the winner, later matches in this event will be cleared because the bracket path changes.</p><label class="label">Correct winner</label><button class="pick ${selected===m.a?'selected':''}" data-editwinner="${esc(m.a)}">${esc(m.a)}</button><button class="pick ${selected===m.b?'selected':''}" data-editwinner="${esc(m.b)}">${esc(m.b)}</button>${g.type==='pool'?`<label class="label">Balls ${esc(loser)} had left</label><input id="edit-sl" type="number" inputmode="numeric" placeholder="0–7" value="${slVal}">`:`<div class="row"><div><label class="label">${esc(selected)}</label><input id="edit-sw" type="number" inputmode="numeric" placeholder="${g.type==='tt'?'11':'21'}" value="${swVal}"></div><div><label class="label">${esc(loser)}</label><input id="edit-sl" type="number" inputmode="numeric" placeholder="0" value="${slVal}"></div></div>`}<div class="error" id="edit-err"></div><button class="btn primary" style="width:100%;margin-top:10px" data-saveedit>Save corrected result</button></div></div>`
+}
+function resetRoundDependenciesAfterEdit(t,ri,type){
+ let r=t.rounds[ri];
+ t.rounds=t.rounds.slice(0,ri+1);
+ t.complete=false;
+ t.standings=null;
+ if(type==='normal'){
+  r.jokerMatch=null;
+  r.closestLoser=null;
+  r.closestLosers=null;
+  r.playoff=null;
+  r.advanced=false;
+ }
+ if(type==='playoff'){
+  r.jokerMatch=null;
+  r.closestLoser=null;
+  r.advanced=false;
+ }
+ if(type==='joker'){
+  r.advanced=false;
+ }
+}
+function saveEditedScore(){
+ let o=state.edit,g=GAMES.find(x=>x.key===o.g),t=state.tournaments[o.g],r=t.rounds[o.ri];
+ let m=o.type==='joker'?r.jokerMatch:o.type==='playoff'?r.playoff.matches[o.mi]:r.matches[o.mi];
+ let newWinner=o.winner||m.winner;
+ if(!newWinner){$('#edit-err').textContent='Pick the correct winner.';return}
+ let sw=null,sl=Number($('#edit-sl').value);
+ if(g.type!=='pool')sw=Number($('#edit-sw').value);
+ let err=gameScoreValid(g,sw,sl);
+ if(err){$('#edit-err').textContent=err;return}
+ let winnerChanged=newWinner!==m.winner;
+ m.winner=newWinner;
+ m.loser=newWinner===m.a?m.b:m.a;
+ m.sw=sw;
+ m.sl=sl;
+ m.margin=(sw===null)?sl:Math.abs(sw-sl);
+ if(winnerChanged){
+  resetRoundDependenciesAfterEdit(t,o.ri,o.type);
+ }
+ if(o.type==='playoff'){
+  if(winnerChanged)advancePlayoff(r.playoff);
+  afterResult(t);
+ }else{
+  afterResult(t);
+ }
+ computeStandings(t);
+ state.edit=null;
+ save();
+ render();
+}
+
+function render(){let body={home:home,play:play,leader:leaderboard,players:players,rules:rules}[state.view]();document.getElementById('app').innerHTML=`<div class="app">${header()}${body}${tabs()}${modal()}${editModal()}</div>`}
+document.body.addEventListener('click',e=>{let el=e.target.closest('[data-tab],[data-gen],[data-saveplayers],[data-open],[data-close],[data-winner],[data-saveresult],[data-edit],[data-closeedit],[data-saveedit],[data-repairjoker],[data-edit],[data-closeedit],[data-saveedit],[data-repairjoker]');if(!el)return;if(el.dataset.edit){let [g,ri,mi,type]=el.dataset.edit.split('|');state.edit={g,ri:+ri,mi:+mi,type,winner:null};render()}else if(el.dataset.editwinner){state.edit.winner=el.dataset.editwinner;render()}else if(el.hasAttribute('data-closeedit')){state.edit=null;render()}else if(el.hasAttribute('data-saveedit')){saveEditedScore()}else if(el.hasAttribute('data-repairjoker')){let fixed=repairTiedClosestLoserState();alert(fixed?'Joker tie repaired.':'No Joker tie needed repairing.');render()}else if(el.dataset.tab){state.view=el.dataset.tab;save();render()}else if(el.hasAttribute('data-gen')){if(state.players.length<4){alert('Add at least 4 players.');return}generate()}else if(el.hasAttribute('data-saveplayers')){let names=$('#names').value.split('\n').map(s=>s.trim()).filter(Boolean);let seen={};names=names.map(n=>{seen[n]=(seen[n]||0)+1;return seen[n]>1?`${n} (${seen[n]})`:n});state.players=names;state.tournaments=null;save();render()}else if(el.dataset.open){let [g,ri,mi,type]=el.dataset.open.split('|');if(type==='0')type='normal';if(type==='1')type='joker';state.modal={g,ri:+ri,mi:+mi,type,winner:null};render()}else if(el.hasAttribute('data-close')){state.modal=null;render()}else if(el.dataset.winner){state.modal.winner=el.dataset.winner;render()}else if(el.hasAttribute('data-saveresult')){let o=state.modal,g=GAMES.find(x=>x.key===o.g),t=state.tournaments[o.g];let sw=null,sl=Number($('#sl').value);if(g.type!=='pool')sw=Number($('#sw').value);let err=gameScoreValid(g,sw,sl);if(err){$('#err').textContent=err;return}if(o.type==='playoff')applyPlayoffResult(t,o.ri,o.mi,o.winner,sw,sl);else applyResult(t,o.ri,o.mi,o.type==='joker',o.winner,sw,sl);state.modal=null;save();render()}});
+load();repairTiedClosestLoserState();render();
+})();
+</script></body></html>
